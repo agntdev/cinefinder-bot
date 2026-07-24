@@ -1,13 +1,13 @@
 [
   {
-    "name": "Search",
+    "name": "Search asks for a title or actor",
     "steps": [
       {
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Free-text search by title or actor"
+              "text": "Tell me a movie title or actor to look for."
             }
           }
         ],
@@ -15,6 +15,13 @@
           "callback": "search:start"
         }
       }
+    ]
+  }
+  ,{
+    "name": "Search validates a short query",
+    "steps": [
+      { "send": { "callback": "search:start" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "text": "x" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Use at least two letters so I can find the right movie or actor." } }] }
     ]
   }
 ]

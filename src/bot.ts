@@ -6,7 +6,16 @@ import type { StorageAdapter } from "grammy";
 // bot grows. Durable domain data must NOT live here — use the toolkit's
 // persistent storage (see AGENTS.md).
 export interface Session {
-  // example: step?: "awaiting_amount";
+  /** Ephemeral input state for the current conversation. */
+  step?: "awaiting_city" | "awaiting_search" | "awaiting_recommendation" | "awaiting_genre";
+  /** Persisted by the toolkit's configured Redis/Durable Object storage. */
+  user?: {
+    telegramId: number;
+    location?: string;
+    favoriteGenres: string[];
+    favoriteMoods: string[];
+    trendingAlerts: boolean;
+  };
 }
 
 export type Ctx = BotContext<Session>;
