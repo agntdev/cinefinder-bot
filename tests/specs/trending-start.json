@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Popular/Trending",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "List current trending movies with pagination"
+            }
+          }
+        ],
+        "send": {
+          "callback": "trending:start"
+        }
+      }
+    ]
+  }
+]
