@@ -1,13 +1,13 @@
 [
   {
-    "name": "Now Playing Near Me",
+    "name": "Now Playing asks for a location",
     "steps": [
       {
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Show movies playing nearby with location permission or manual input"
+              "text": "Share your location to find movies nearby, or type a city, ZIP, or two-letter country code."
             }
           }
         ],
@@ -15,6 +15,13 @@
           "callback": "now_playing:start"
         }
       }
+    ]
+  }
+  ,{
+    "name": "Now Playing validates a manual location",
+    "steps": [
+      { "send": { "callback": "now_playing:start" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "text": "x" }, "expect": [{ "method": "sendMessage", "payload": { "text": "That doesn't look like a city or ZIP. Try again with a nearby place." } }] }
     ]
   }
 ]

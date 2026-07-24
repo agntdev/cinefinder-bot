@@ -1,13 +1,13 @@
 [
   {
-    "name": "Popular/Trending",
+    "name": "Trending handles an unconfigured movie API",
     "steps": [
       {
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "List current trending movies with pagination"
+              "text": "Trending movies aren't set up yet. Ask the owner to add the movie data API key."
             }
           }
         ],

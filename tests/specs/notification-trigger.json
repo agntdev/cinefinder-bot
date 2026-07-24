@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Notification trigger explains missing owner setup",
+    "steps": [
+      {
+        "send": { "callback": "notification:trigger" },
+        "expect": [{ "method": "sendMessage", "payload": { "text": "Owner notifications aren't set up yet." } }]
+      }
+    ]
+  }
+]

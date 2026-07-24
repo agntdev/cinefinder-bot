@@ -1,13 +1,13 @@
 [
   {
-    "name": "My Preferences",
+    "name": "Preferences show a useful empty state",
     "steps": [
       {
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "View and update saved preferences and subscriptions"
+              "text": "Your movie preferences\n\nFavorite genres: none yet\nFavorite moods: none yet\nTrending alerts: off"
             }
           }
         ],
@@ -15,6 +15,13 @@
           "callback": "preferences:start"
         }
       }
+    ]
+  }
+  ,{
+    "name": "Preferences save a genre",
+    "steps": [
+      { "send": { "callback": "preferences:genre" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "text": "Mystery" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Saved Mystery to your favorite genres." } }] }
     ]
   }
 ]
